@@ -5,20 +5,39 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
+    "test:unit": "vue-cli-service test:unit --watch",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "@testing-library/jest-dom": "^5.16.4",
+    "@testing-library/user-event": "^14.2.0",
+    "bootstrap": "^5.1.3",
+    "bootstrap-vue": "^2.22.0",
     "core-js": "^3.8.3",
-    "vue": "^2.6.14"
+    "flush-promises": "^1.0.2",
+    "vee-validate": "^3.4.14",
+    "vue": "^2.6.14",
+    "vue-i18n": "^8.27.1",
+    "vue-loader": "^17.0.0",
+    "vue-router": "^3.5.4",
+    "vuex": "^3.6.2"
   },
   "devDependencies": {
     "@babel/core": "^7.12.16",
     "@babel/eslint-parser": "^7.12.16",
+    "@intlify/vue-i18n-loader": "^1.1.0",
+    "@testing-library/vue": "^5.8.3",
     "@vue/cli-plugin-babel": "~5.0.0",
     "@vue/cli-plugin-eslint": "~5.0.0",
+    "@vue/cli-plugin-unit-jest": "~5.0.0",
     "@vue/cli-service": "~5.0.0",
+    "@vue/test-utils": "^1.1.3",
+    "@vue/vue2-jest": "^27.0.0-alpha.2",
+    "babel-jest": "^27.0.6",
     "eslint": "^7.32.0",
     "eslint-plugin-vue": "^8.0.3",
+    "jest": "^27.0.5",
+    "vue-i18n-jest": "^1.1.1",
     "vue-template-compiler": "^2.6.14"
   },
   "eslintConfig": {
@@ -33,7 +52,30 @@
     "parserOptions": {
       "parser": "@babel/eslint-parser"
     },
-    "rules": {}
+    "rules": {},
+    "overrides": [
+      {
+        "files": [
+          "**/__tests__/*.{j,t}s?(x)",
+          "**/tests/unit/**/*.spec.{j,t}s?(x)"
+        ],
+        "env": {
+          "jest": true
+        }
+      }
+    ]
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.vue$": "@vue/vue2-jest"
+    },
+    "globals": {
+      "vue-jest": {
+        "transform": {
+          "i18n": "vue-i18n-jest"
+        }
+      }
+    }
   },
   "browserslist": [
     "> 1%",
