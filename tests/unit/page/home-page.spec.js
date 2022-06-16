@@ -54,6 +54,7 @@ describe('HomePage.vue', () => {
     // type name to input
     const input = screen.getByRole('textbox')
     await user.type(input, 'Jose')
+    screen.getByDisplayValue('Jose')
     // submit button
     const submitButton = screen.getByRole('button', {name: 'Create new member'})
     await user.click(submitButton)
